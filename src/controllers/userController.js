@@ -16,10 +16,6 @@ const isValidRequestBody = function (requestBody) {
   return Object.keys(requestBody).length > 0
 }
 
-const isValidObjectId = function (objectId) { // change -- add this validation to check object id type
-  return mongoose.Types.ObjectId.isValid(objectId)
-}
-
 //========================================POST /register==========================================================
 
 
@@ -157,7 +153,7 @@ let loginUser = async (req, res) => {
       userId: UserLogin._id.toString(),
       orgnaisation: "function_Up_friend",
       iat: Math.floor(Date.now() / 1000),
-      exp: Math.floor(Date.now() / 1000) + (60 * 60)
+      exp: Math.floor(Date.now() / 1000) + (30 * 60)
     },
       "group_31_functionUp"
     );

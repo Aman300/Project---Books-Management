@@ -161,7 +161,7 @@ const GetFilteredBook = async function (req, res) {
     const bookData = await booksModel.find(obj).sort({ title: 1 }).select({ __v: 0, ISBN: 0,  subcategory: 0, isDeleted: 0, createdAt: 0, updatedAt: 0, deletedAt: 0, }).lean()
 
     if (bookData.length == 0) {
-      return res.status(400).send({ status: false, message: "No Books found" })
+      return res.status(404).send({ status: false, message: "No Books found" })
     }
 
     return res.status(200).send({ status: true,  message: 'Success', data: bookData })
